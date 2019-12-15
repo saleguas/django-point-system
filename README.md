@@ -109,7 +109,9 @@ A `student` key is created from the entry form as well, when the student ID isn'
 
 # Where is the code?
 
-I do not want to make the code public as of now. However, if you really want a copy of the code, send me an email(which can be found on the footer of any of the examples and most of my projects to begin with) and I'll forward you the code. You can view examples of the system in action at the links section.
+~~I do not want to make the code public as of now. However, if you really want a copy of the code, send me an email(which can be found on the footer of any of the examples and most of my projects to begin with) and I'll forward you the code. You can view examples of the system in action at the links section.~~
+
+The code is now freely available; however, it is was put together as a personal project rather than a commercial/open source project, so it's pretty messy and undocumented. Either download it from the `src` folder or the [releases](https://github.com/saleguas/django-point-system/releases) tab.
 
 # Links
 

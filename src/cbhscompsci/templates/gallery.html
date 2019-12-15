@@ -1,0 +1,37 @@
+{% extends 'layouts/default.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="text-center head text-white">
+        OUR PHOTOS
+      </div>
+      <hr>
+    </div>
+  </div>
+
+</div>
+<div class="container space">
+  <div class="button-group filters-button-group">
+      <button class="button is-checked" data-filter="*">all</button>
+      <button class="button" data-filter=".2018">2018</button>
+      <button class="button" data-filter=".2019">2019</button>
+      <button class="button" data-filter=".2020">2020</button>
+  </div>
+
+  <div class='grid'>
+      {% for name in folderNames %}
+        {% for file in folderFiles %}
+          {% if name in file %}
+            <div class="element-item {{ name }}" data-category='{{name}}'>
+              <img src="{% static file %}">
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

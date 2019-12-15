@@ -1,0 +1,179 @@
+{% extends 'layouts/default.html' %}
+{% load static from staticfiles %}
+{% load mathTags %}
+{% block content %}
+
+<head>
+  <script src="{% static 'js/Chart.bundle.min.js' %}"></script>
+  <script src="{% static 'js/loading-bar.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/loading-bar.css' %}">
+  <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+
+</head>
+
+<div class="student container">
+  <div class="row">
+    <div class="col">
+      <div class ="student-breakdown">
+        <div class= "shadow text-center">
+          <div class="lineage">
+            <h1 class='text-white'>{{ student }}</h1>
+          </div>
+          {% with percent=student.points|divide:totalPoints %}
+          <div class ="hr-large lineage"></div>
+          <h1 class = "text-info lineage">{{ student.points }} points</h1>
+          {% endwith %}
+          <div class="collapsable spacedCol text-left">
+            <p>
+              <a class="btn btn-dark lineage" data-toggle="collapse" href="#history" role="button" aria-expanded="false" aria-controls="history">
+                History
+              </a>
+            </p>
+            <div class="collapse" id="history">
+              <div class="card card-body bg-dark">
+                {% for entry in pointArr %}
+                <div class="row">
+                    <div class="col">
+                      <p><span class="text-info">{{ entry.points }} points</span> <span class='text-white'>from {{ entry.reason }} on {{ entry.date }}</span></p>
+                    </div>
+                </div>
+                {% endfor %}
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- Start doughnut chart -->
+              <canvas id="distChart" height="400" width="400"></canvas>
+              <script type="text/javascript">
+                var ctx = document.getElementById('distChart');
+                var myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [ '{{student}} points', "Other points"],
+                        datasets: [{
+                            label: 'Point distribution',
+                            data: [ {{ student.points }}, {{ totalPoints }}-{{student.points}} ],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        title: {
+                          display: true,
+                          text: 'Point distribution'
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        pieceLabel: {
+                        },
+                    }
+                });
+              </script>
+              <!-- End doughnot chart -->
+            </div>
+
+          </div>
+          <div class ="hr-large lineage"></div>
+          <h1 class = "text-info lineage">Activity breakdown</h1>
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- Start doughnut chart -->
+              <canvas id="activityChart" height="400" width="400"></canvas>
+              <script type="text/javascript">
+                var ctx = document.getElementById('activityChart');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [ {% for month in months %} '{{month}}', {% endfor %}],
+                        datasets: [{
+                            label: 'Activity',
+                            data: [ {% for point in points %} {{point}}, {% endfor %} ],
+                            backgroundColor: [
+                              {% for color in colors %}
+                                '{{color}} 0.2)',
+                              {% endfor %}
+                            ],
+                            borderColor: [
+                            {% for color in colors %}
+                              '{{color}} 1.0)',
+                            {% endfor %}
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        title: {
+                          display: true,
+                          text: 'Point distribution'
+                        },
+                        scales: {
+                          yAxes: [{
+                            ticks: {
+                              beginAtZero: true
+                            }
+                          }]
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                          labels: false
+                        }
+                    }
+                });
+              </script>
+              <!-- End doughnot chart -->
+            </div>
+
+          </div>
+          <div class="row spacedEnd">
+            <div class="col">
+
+              <div class="col text-info lineage">
+                Average activity
+              </div>
+              <div class="col {{avgColor}} lineage">
+                {{avgStatus}}
+              </div>
+              <div class="col">
+                <div
+                  class="ldBar label-center lineage"
+                  style="width:50%;height:50%;margin:auto"
+                  data-value="{{avgPoints}}"
+                  data-preset="circle"
+                ></div>
+              </div>
+            </div>
+            <div class="col">
+
+              <div class="col text-info lineage">
+                Recent activity
+              </div>
+              <div class="col {{recentColor}} lineage">
+                {{recentStatus}}
+              </div>
+              <div class="col" >
+                <div
+                  class="ldBar label-center lineage"
+                  style="width:50%;height:50%;margin:auto"
+                  data-value="{{ recentPoints}}"
+                  data-preset="circle"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

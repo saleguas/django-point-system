@@ -1,0 +1,219 @@
+/* Starting css */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+}
+/* Ending css */
+/* HR divs */
+
+
+.hr-large {
+  width: 80%;
+  height: 1px;
+  margin: 2% auto;
+  border-bottom: 1px solid #969696;
+}
+.hr-small {
+  width: 30%;
+  height: 1px;
+  margin: 2% auto;
+  border-bottom: 1px solid #969696;
+}
+.hr-full{
+  width: 100%;
+  height: 1px;
+  margin: 2% auto;
+  border-bottom: 1px solid #969696;
+}
+/* Hr ends */
+
+/* Tables */
+.table-row:hover{
+  cursor:pointer;
+}
+/* Tables end */
+
+/* Styling classes */
+
+.spacedCol{
+  margin: 2% 2%;
+}
+.white-text{
+  color:white;
+}
+
+
+.spacedEnd{
+  margin: : 1em 1em;
+}
+.gCaption{
+    text-align: center;
+}
+
+.student{
+  padding-bottom: 10em;
+}
+.chCaption{
+  font-size: 2em;
+}
+.container{
+  margin: 4% auto;
+}
+/* MEDIA QUERY */
+@media only screen and (max-width: 900px)
+{
+  .space{
+    margin-bottom: 40%;
+  }
+}
+.shadow {
+   -moz-box-shadow:    inset 0 0 5px #000000;
+   -webkit-box-shadow: inset 0 0 5px #000000;
+   box-shadow:         inset 0 0 5px #000000;
+}
+.hidden{
+  display: none;
+}
+
+.noBot{
+  margin-bottom: 0;
+  margin-top: 8%;
+}
+
+.head{
+  font-weight: bold;
+  font-size: 3em;
+
+}
+/* End styles */
+
+.page-content{
+  min-height: 100%;
+  margin-bottom: -100px;
+}
+
+.page-content:after{
+  content: "";
+  display: block;
+}
+
+.navbar{
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  width: 100%;
+  z-index: 2;
+}
+/*FOOTER*/
+footer {
+  width: 100%;
+  background-color: #212529;
+  position: sticky;
+}
+a{
+  font-weight: bold;
+}
+.footer-text{
+  font-size: 1.5em;
+  color: #FFF;
+}
+.fa{
+  color: #FFF;
+}
+
+
+/* Gallery start */
+.button {
+  display: inline-block;
+  padding: 0.5em 1.0em;
+  border-radius: 4px;
+  background: #ffffff;
+  font-family: sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  margin: 10px;
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.button:active,
+.button.is-checked {
+  background-color: rgba(0,0,0,0.1);
+  outline: none;
+}
+
+.button-group {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.button-group:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.grid article {
+  background-color: #FFFFFF;
+  display: block;
+  float: left;
+  margin: 1%;
+  width: 23%;
+}
+
+@media (max-width: 1024px) {
+  .grid article {
+    width: 31.3%;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid article {
+    width: 48%;
+  }
+}
+
+@media (max-width: 479px) {
+  .grid article {
+    margin: 2% 0;
+    width: 100%;
+  }
+}
+/* Gallery end */
+#particles-js{
+  background-color: #3c3232;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:0;
+  position: fixed;
+}
+.wrapper{
+  z-index:2;
+  position: relative;
+}
+
+#distChart{
+  width: 25em;
+  height: 25em;
+}

@@ -1,0 +1,26 @@
+{% extends 'layouts/default.html' %}
+{% load static from staticfiles %}
+<!-- <img src="{% static 'img/snow.png' %}" alt="New York"> -->
+
+{% block content %}
+
+<div class="container white-text" style="position:relative">
+  <div class="row">
+    <div class="col text-center">
+      <h1 class='lineage' style="position:relative">Welcome!</h1>
+      <h5 class="text-muted lineage">To the computer science website for CBHS.</h5>
+    </div>
+  </div>
+  <div class="container py-4 text-center space lineage">
+      <h1 class="lineage">What is it for?</h1>
+      <p class="lineage">This website is for the competitive programming sect of Cypress Bay's computer science.
+        Use the respective tags to navigate the website. This website keeps track of the points to everyone that attends
+      the meetings and competitions. We use these points to determine various things and eligibility, so we recommended
+    everyone is active in the club.</p>
+
+  </div>
+</div>
+<footer>
+
+</footer>
+{% endblock %}

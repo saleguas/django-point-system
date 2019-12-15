@@ -1,0 +1,45 @@
+{% load static from staticfiles %}
+<section>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007714979/custom/page/hack-a-thon-3/masonry.min.min.js"></script> -->
+  <!-- <script src="https://cdn2.hubspot.net/hub/322787/hub_generated/style_manager/1440007849180/custom/page/hack-a-thon-3/isotope.min.js"></script> -->
+  <script type="text/javascript">
+    particlesJS.load('particles-js', "{% static 'text/particlesjs-config.json' %}", function() {
+      console.log('callback - particles.js config loaded');
+    });
+  </script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script src="{% static 'js/masonry.min.min.js' %}"></script>
+  <script src="{% static 'js/isotope.min.js' %}"></script>
+
+  <!------ Include the above in your HEAD tag ---------->
+
+  <!-- Footer -->
+  	<footer class="text-center footer">
+      <div class="container noBot">
+  			<div class="row">
+  				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+  					<ul class="list-unstyled list-inline social">
+  						<li class="list-inline-item"><a href="https://www.instagram.com/cypressbaycomp/"><i class="fa fa-facebook fa-2x"></i></a></li>
+  						<li class="list-inline-item"><a href="https://www.instagram.com/cypressbaycomp/"><i class="fa fa-twitter fa-2x"></i></a></li>
+  						<li class="list-inline-item"><a href="https://www.instagram.com/cypressbaycomp/"><i class="fa fa-instagram fa-2x"></i></a></li>
+  						<li class="list-inline-item"><a href="https://www.instagram.com/cypressbaycomp/"><i class="fa fa-google-plus fa-2x"></i></a></li>
+  						<li class="list-inline-item"><a href="mailto:salvadoraleguas@gmail.com" target="_blank"><i class="fa fa-envelope fa-2x"></i></a></li>
+  					</ul>
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-white footer-text">
+  					<p><a href="#">Cypress Bay Computer Science Club</a> for pushing our limits and making us climb higher.</p>
+  					<p class="h6">&copy All right Reserved.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Cypress Bay computer science</a></p>
+            <p class="h6">Inspired by <a href='https://github.com/Nate8888'>Nathan Wilk</a> (Founder of the Cybersecurity club)</p>
+  				</div>
+  			</div>
+      </div>
+  	</footer>
+</section>

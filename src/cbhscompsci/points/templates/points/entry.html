@@ -1,0 +1,66 @@
+{% extends 'layouts/default.html' %}
+
+{% block content %}
+<div class="container shadow">
+	{% if form.errors %}
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			{% for field in form %}
+				{% if field.errors %}
+				<ul>
+					<div class="alert alert-danger" role="alert">
+						{{ field.label }}: {{ field.errors|striptags }}
+					</div>
+				</ul>
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
+
+
+	{% if messages.error %}
+	<ul>
+		{% for error in messages.error %}
+			<div class="alert alert-danger" role="alert">
+				{{ field.label }}: {{ field.errors|striptags }}
+			</div>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	{% for success in messages.success %}
+	<ul class="messages">
+			<div class="alert alert-success">{{ message }}</div>
+	</ul>
+	{% endfor %}
+
+	<form method="post" novalidate>
+	  {% csrf_token %}
+
+	  {{ form.non_field_errors }}
+
+	  {{ form.source.errors }}
+	  {{ form.source }}
+	  <div class="form-row">
+	    <div class="form-group col-md-6 lineage">
+	      <label for="inputEmail4" class='text-white'>First Name</label>
+	      {{ form.firstName }}
+	    </div>
+	    <div class="form-group col-md-6 text-white lineage">
+	      <label for="inputPassword4">Last Name</label>
+	      {{ form.lastName }}
+	    </div>
+	  </div>
+	  <div class="form-group col text-white lineage">
+	    <label for="inputAddress">Meeting Key</label>
+	    {{ form.meetingKey }}
+	  </div>
+	  <div class="form-group col text-white lineage">
+	    <label for="inputAddress2">Student Number</label>
+	    {{ form.student_ID }}
+	  </div>
+	  <button type="submit" class="btn btn-dark col lineage">Submit</button>
+	</form>
+</div>
+
+{% endblock %}

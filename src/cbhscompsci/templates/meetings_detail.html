@@ -1,0 +1,41 @@
+{% extends 'layouts/default.html' %}
+{% load static from staticfiles %}
+{% load mathTags %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+<div class="student container">
+  <div class="row">
+    <div class="col">
+      <div class ="student-breakdown">
+        <div class= "shadow text-center">
+          <div class="lineage text-white">
+            <h1>{{ meeting.name }}</h1>
+          </div>
+          <div class ="hr-large lineage text-white"></div>
+          <h1 class = "lineage text-white">{{ meeting.date }}</h1>
+          <h3 class = "lineage text-white">Worth {{ meeting.points }} points.</h3>
+          <h5 class = "lineage spacedEnd text-white">{{ meeting.desc }}</h5>
+          <div class ="hr-large lineage text-white"></div>
+          <h1 class ="lineage text-white">Attended</h1>
+          <p class = "lineage spacedEnd text-muted">(Click any of the students to view their profile)</p>
+
+          {% for entry in entrys %}
+
+          <div class="row">
+              <div class="col lineage">
+                <a href="{% url 'points:breakdown' id=entry.student.id %}">{{entry.student}}</a>
+              </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

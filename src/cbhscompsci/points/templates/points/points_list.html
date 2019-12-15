@@ -1,0 +1,141 @@
+{% extends 'layouts/default.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<head>
+  <script src="{% static 'js/Chart.bundle.min.js' %}"></script>
+
+  <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+
+</head>
+  <div class="container">
+    <div class="input-group mb-3 bg-dark">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">@</span>
+      </div>
+      <input type="text" onkeyup='searchTable()' class="form-control search" placeholder="Search for names..." aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="row">
+      <div class="col">
+        <table
+        id="studentPoints"
+        class="table table-dark bg-dark table-bordered table-condensed table-striped table-hover"
+        >
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Points</th>
+              <th scope="col">First Name</th>
+              <th scope ="col">Last Name</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for student in students %}
+            <tr class="table-row lineage" data-href="{% url 'points:breakdown' id=student.id %}">
+              <th scope="row">
+                {{ forloop.counter }}
+              </th>
+              <td class="points">
+              {{ student.points }}
+              </td>
+              <td class="firstName">
+              {{ student.firstName }}
+              </td>
+              <td class="lastName">
+                {{ student.lastName }}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col">
+        <canvas id="distChart" ></canvas>
+        <script type="text/javascript">
+          var ctx = document.getElementById('distChart');
+          var myChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                  labels: [ {% for student in topStudents %} '{{student}}', {% endfor %}],
+                  datasets: [{
+                      label: 'Top 15 students',
+                      data: [ {% for student in topStudents %} '{{student.points}}', {% endfor %}],
+                      backgroundColor: [
+                          'rgba(38, 139, 210, 0.2)',
+                          'rgba(38, 139, 210, 0.2)',
+                          'rgba(38, 139, 210, 0.2)',
+
+                          'rgba(108, 113, 196, .2)',
+                          'rgba(108, 113, 196, .2)',
+                          'rgba(108, 113, 196, .2)',
+
+                          'rgba(42, 161, 152, .2)',
+                          'rgba(42, 161, 152, .2)',
+                          'rgba(42, 161, 152, .2)',
+
+                          'rgba(108, 113, 196, .2)',
+                          'rgba(108, 113, 196, .2)',
+                          'rgba(108, 113, 196, .2)',
+
+                          'rgba(181, 137, 0, 0.2)',
+                          'rgba(181, 137, 0, 0.2)',
+                          'rgba(181, 137, 0, 0.2)',
+
+
+
+                      ],
+                      borderColor: [
+                          'rgba(38, 139, 210, 1)',
+                          'rgba(38, 139, 210, 1)',
+                          'rgba(38, 139, 210, 1)',
+
+                          'rgba(108, 113, 196, 1)',
+                          'rgba(108, 113, 196, 1)',
+                          'rgba(108, 113, 196, 1)',
+
+                          'rgba(42, 161, 152, 1)',
+                          'rgba(42, 161, 152, 1)',
+                          'rgba(42, 161, 152, 1)',
+
+                          'rgba(108, 113, 196, 1)',
+                          'rgba(108, 113, 196, 1)',
+                          'rgba(108, 113, 196, 1)',
+
+                          'rgba(181, 137, 0, 1)',
+                          'rgba(181, 137, 0, 1)',
+                          'rgba(181, 137, 0, 1)',
+
+
+
+
+
+                      ],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  title: {
+                    display: true,
+                    text: 'Top 15 students'
+                  },
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  pieceLabel: {
+                  },
+              }
+          });
+        </script>
+      </div>
+    </div>
+</div>
+<br class='visible-sm'>
+<br class='visible-sm'>
+<br class='visible-sm'>
+<br class='visible-sm'>
+
+
+{% endblock %}

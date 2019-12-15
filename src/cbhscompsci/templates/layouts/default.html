@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="'en'" dir="ltr">
+  {% include "includes/head.html" %}
+    <div class="page-content">
+      <div class="header">
+        {% include "includes/header.html" %}
+      </div>
+      <div id='particles-js'></div>
+      <div class="wrapper">
+        {% block content %}
+        {% endblock %}
+      </div>
+  </div>
+    {% include "includes/footer.html" %}
+</html>
